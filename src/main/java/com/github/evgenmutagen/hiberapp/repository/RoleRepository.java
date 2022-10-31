@@ -18,7 +18,7 @@ public class RoleRepository implements RoleRepositoryInterface {
     public List<Role> findAll() {
         try (Session session = sessionFactory.openSession()) {
             Transaction transaction = session.beginTransaction();
-            List<Role> roles = session.createQuery("FROM Role r", Role.class).list();
+            List<Role> roles = session.createQuery("select r from Role r", Role.class).list();
             transaction.commit();
             return roles;
         }

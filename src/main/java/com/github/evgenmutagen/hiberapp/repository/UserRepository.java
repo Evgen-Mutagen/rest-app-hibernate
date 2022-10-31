@@ -38,7 +38,7 @@ public class UserRepository implements UserRepositoryInterface {
     public List<User> findAll() {
         try (Session session = sessionFactory.openSession()) {
             session.beginTransaction();
-            List<User> users = session.createQuery("FROM User u", User.class).list();
+            List<User> users = session.createQuery("select u FROM User u", User.class).list();
             session.getTransaction().commit();
             List<User> list = new ArrayList<>();
             for (User u : users) {
